@@ -42,6 +42,7 @@ interval_sql = tf_mapping.get(TIMEFRAME_LABEL, '1 day')
 con = duckdb.connect(DB_PATH)
 print(f"Extraindo dados de {REF_SERIES.upper()} para {TIMEFRAME_LABEL} ({DATA_TYPE})...")
 
+# ---> ADAPTE AQUI PARA A SUA TABELA E COLUNAS REAIS <---
 if TIMEFRAME_LABEL == 'Tick-By-Tick':
     query = f"SELECT timestamp AS Date, {REF_SERIES} AS val FROM forex_ticks WHERE pair = 'EURUSD' ORDER BY timestamp ASC LIMIT {DATA_SIZE};"
 else:
